@@ -1,68 +1,96 @@
-"""_summary_
-
-Returns:
-    _type_: _description_
-"""
-
 # esimerkki.py
 
-def add(a, b):
-    """_summary_
-        adds a and b together
-    """
-    return a+b
+"""Esimerkkimoduuli, joka demonstroi peruslaskutoimituksia ja yksinkertaisen luokan."""
 
-def subtract(a, b): # Subtracts b from a
-    """_summary_
-        adds a and b together
-    """
-    return a-b
+from numbers import Number
 
-def multiply(a, b):
-    """_summary_
+
+def add(a: Number, b: Number) -> Number:
+    """Laskee kahden luvun summan.
 
     Args:
-        a (_type_): _description_
-        b (_type_): _description_
+        a (Number): Ensimmäinen yhteenlaskettava.
+        b (Number): Toinen yhteenlaskettava.
 
     Returns:
-        _type_: _description_
+        Number: Lukujen a ja b summa.
+    """
+    return a + b
+
+
+def subtract(a: Number, b: Number) -> Number:
+    """Vähentää toisen luvun ensimmäisestä.
+
+    Args:
+        a (Number): Vähennettävä.
+        b (Number): Vähentäjä.
+
+    Returns:
+        Number: Lukujen a ja b erotus.
+    """
+    return a - b
+
+
+def multiply(a: Number, b: Number) -> Number:
+    """Kertoo kaksi lukua keskenään.
+
+    Args:
+        a (Number): Ensimmäinen kerrottava.
+        b (Number): Toinen kerrottava.
+
+    Returns:
+        Number: Lukujen a ja b tulo.
     """
     return a * b
 
+
 class OmaLuokka:
-    """_summary_
-    """
-    def __init__(self, x):
-        """_summary_
+    """Luokka, joka säilyttää arvon ja voi suorittaa operaatioita sille."""
+
+    def __init__(self, x: Number):
+        """Alustaa luokan annetulla arvolla.
 
         Args:
-            x (_type_): _description_
+            x (Number): Tallennettava arvo.
         """
         self.x = x
 
-    def double_value(self):
-        """_summary_
+    def double_value(self) -> Number:
+        """Laskee tallennetun arvon kaksinkertaisena.
 
         Returns:
-            _type_: _description_
+            Number: Kaksinkertainen arvo.
         """
         return self.x * 2
 
     def print_x(self):
-        """_summary_
+        """Tulostaa tallennetun arvon."""
+        print(f"Tallennettu arvo on: {self.x}")
 
-        Args:
-            x (_type_): _description_
+    def __str__(self) -> str:
+        """Tarjoaa merkkijonoesityksen oliosta.
+
+        Returns:
+            str: Olion kuvaava merkkijono.
         """
-        print(self.x)
+        return f'OmaLuokka(x={self.x})'
+
 
 def main():
-    """_summary_
-    """
+    """Pääfunktio, joka demonstroi funktioiden ja OmaLuokka-luokan käyttöä."""
+    # Demonstroi laskufunktioita
+    a, b = 10, 5
+    print(f"{a} + {b} = {add(a, b)}")
+    print(f"{a} - {b} = {subtract(a, b)}")
+    print(f"{a} * {b} = {multiply(a, b)}\n")
+
+    # Demonstroi OmaLuokka
     x = 5
     olio = OmaLuokka(x)
-    print(olio)
+    olio.print_x()
+    print(f"Kaksinkertainen arvo: {olio.double_value()}")
+    print(f"Olion esitys: {olio}")
+
 
 if __name__ == '__main__':
     main()
